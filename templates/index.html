@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Music Live Shows</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+    <div class="container">
+        <h1 class="text-center mt-5 mb-4">Available Shows</h1>
+        <div class="row">
+            {% for show in shows %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ show.name }}</h5>
+                            <p class="card-text">Tickets left: {{ show.tickets }}</p>
+                            <form action="/book/{{ show.name }}" method="post">
+                                <button type="submit" class="btn btn-primary">Book Ticket</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="text-right mt-2 mr-2">
+            <a href="/logout" class="btn btn-warning">Logout</a>
+        </div>
+    </div>
+</body>
+</html>
